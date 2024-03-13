@@ -1,0 +1,10 @@
+<% @questions.each do |question| %>
+ <p><%= question.content %></p>
+ <%= form_with(url: user_answers_path, method: :post) do |form| %>
+ <% question.answers.each do |answer| %>
+ <%= form.radio_button :answer_id, answer.id %>
+ <%= answer.content %><br>
+ <% end %>
+ <%= form.submit "Submit" %>
+ <% end %>
+<% end %>
